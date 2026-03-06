@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Comal — Ad Campaign Proposal</title>
+  <style>
+    :root{
+      --copper:#B8791A;
+      --copper-light:#F0A832;
+      --teal:#0F4A4C;
+      --teal-mid:#1a6466;
+      --teal-light:#e8f4f4;
+      --cream:#FBF8F2;
+      --white:#FFFFFF;
+      --text:#1a1a1a;
+      --text-mid:#3d3d3d;
+      --muted:#6b6560;
+      --soft:#9a9390;
+      --border:#e2ddd6;
+      --border-strong:#c8c0b4;
+      --card:#FFFFFF;
+      --card-warm:#fdf9f3;
+      --danger:#c0392b;
+      --danger-bg:#fdf3f2;
+      --danger-border:#f5c6c2;
+      --shadow:0 2px 12px rgba(0,0,0,.07), 0 1px 3px rgba(0,0,0,.05);
+      --shadow-md:0 6px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    body{
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      max-width:1000px;
+      margin:0 auto;
+      padding:0 18px 72px;
+      line-height:1.65;
+    }
+
+    .hero{
+      position:relative;
+      left:50%;
+      margin-left:-50vw;
+      width:100vw;
+      padding:clamp(44px,7vw,80px) clamp(24px,6vw,80px) clamp(36px,5vw,60px);
+      background: linear-gradient(150deg, var(--teal) 0%, #174f52 60%, #1c6165 100%);
+      color:#fff;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      top:-100px; right:-100px;
+      width:420px; height:420px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.07);
+      pointer-events:none;
+    }
+
+    .hero-inner{
+      max-width:1200px;
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:6px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.10);
+      color:rgba(255,255,255,.90);
+      font-size:.80rem;
+      font-weight:600;
+      letter-spacing:.4px;
+      white-space:nowrap;
+    }
+
+    .badge::before{
+      content:'';
+      display:inline-block;
+      width:6px; height:6px;
+      border-radius:50%;
+      background:var(--copper-light);
+      flex-shrink:0;
+    }
+
+    .kicker{
+      color:var(--copper-light);
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      margin:18px 0 0;
+    }
+
+    h1{
+      font-size:clamp(52px, 8vw, 96px);
+      line-height:0.95;
+      letter-spacing:-2px;
+      font-weight:800;
+      margin:10px 0 14px;
+      color:#fff;
+    }
+
+    .subtitle{
+      color:rgba(255,255,255,.72);
+      font-size:clamp(13px,1.5vw,16px);
+      max-width:620px;
+      line-height:1.55;
+    }
+
+    .hero-divider{
+      border:none;
+      border-top:1px solid rgba(255,255,255,.14);
+      margin:28px 0;
+    }
+
+    .hero-bottom{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:32px;
+      align-items:start;
+    }
+
+    .hero-summary{
+      color:rgba(255,255,255,.80);
+      font-size:1rem;
+      line-height:1.7;
+      max-width:520px;
+    }
+
+    .hero-summary strong{ color:#fff; font-weight:600 }
+
+    .metrics{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+      min-width:290px;
+    }
+
+    .metric{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:14px;
+      padding:14px 16px;
+    }
+
+    .metric-label{
+      color:rgba(255,255,255,.55);
+      font-size:.67rem;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      margin-bottom:5px;
+    }
+
+    .metric-value{
+      font-size:1.4rem;
+      font-weight:800;
+      color:#fff;
+      line-height:1;
+    }
+
+    .metric-sub{
+      color:rgba(255,255,255,.55);
+      font-size:.76rem;
+      margin-top:4px;
+    }
+
+    h2{
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:var(--copper);
+      margin:44px 0 14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    h2::after{
+      content:'';
+      flex:1;
+      height:1px;
+      background:var(--border);
+    }
+
+    h3{
+      font-size:1rem;
+      font-weight:700;
+      margin-bottom:6px;
+      color:var(--text);
+    }
+
+    p{margin-bottom:10px; color:var(--text-mid)}
+    ul{margin:8px 0 12px 20px}
+    li{margin-bottom:6px; color:var(--text-mid)}
+
+    .section-card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .hook-box{
+      background: linear-gradient(90deg, #fef9f0, #fffdf8);
+      border:1px solid #e8d9b8;
+      border-left:4px solid var(--copper);
+      border-radius:14px;
+      padding:20px 22px;
+      font-size:1.15rem;
+      line-height:1.55;
+      font-style:italic;
+      color:var(--text);
+    }
+
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+
+    .insight-card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .insight-card h3{ color:var(--teal) }
+
+    .dish-card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .dish-name{font-size:1rem;font-weight:700;margin-bottom:6px;color:var(--text)}
+    .dish-reason{font-size:.92rem;color:var(--muted);margin-bottom:0}
+
+    .mini-label{
+      color:var(--copper);
+      font-size:.69rem;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .video-card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .video-card h3{ color:var(--teal) }
+
+    .video-shell{
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:#f4f4f4;
+      margin-bottom:14px;
+    }
+
+    video{
+      display:block;
+      width:100%;
+      aspect-ratio:9/16;
+      background:#ececec;
+      object-fit:cover;
+    }
+
+    .video-note{
+      padding:9px 12px;
+      font-size:.80rem;
+      color:var(--soft);
+      border-top:1px solid var(--border);
+      background:#fafafa;
+    }
+
+    .video-meta{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 12px}
+
+    .pill{
+      display:inline-block;
+      background:#f3efe8;
+      border:1px solid #ddd6c8;
+      color:var(--text-mid);
+      padding:5px 11px;
+      border-radius:999px;
+      font-size:.78rem;
+      font-weight:600;
+    }
+
+    .script{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .script-row{
+      display:flex;
+      gap:14px;
+      padding:16px 18px;
+      border-bottom:1px solid var(--border);
+      align-items:flex-start;
+    }
+
+    .script-row:last-child{border-bottom:none}
+    .script-row:nth-child(even){background:#fdfbf8}
+
+    .script-ts{
+      background:var(--teal);
+      color:#fff;
+      font-size:.72rem;
+      font-weight:800;
+      padding:4px 10px;
+      border-radius:999px;
+      min-width:72px;
+      text-align:center;
+      white-space:nowrap;
+      margin-top:2px;
+      flex-shrink:0;
+    }
+
+    .script-action{flex:1; color:var(--text-mid); font-size:.95rem}
+
+    .script-audio{
+      font-size:.83rem;
+      color:var(--soft);
+      margin-top:6px;
+      padding-top:6px;
+      border-top:1px dashed var(--border);
+    }
+
+    .overlay-wrap{display:flex;flex-wrap:wrap;gap:9px}
+
+    .overlay-pill{
+      display:inline-block;
+      background:#eef6f6;
+      border:1px solid #c0dede;
+      color:var(--teal);
+      padding:9px 16px;
+      border-radius:999px;
+      font-size:.88rem;
+      font-weight:700;
+    }
+
+    .big-text{
+      background:#fdf9f2;
+      border:1px solid #e8d9b8;
+      border-left:4px solid var(--copper);
+      border-radius:14px;
+      padding:18px 20px;
+      font-size:1rem;
+      color:var(--text-mid);
+      line-height:1.7;
+    }
+
+    .positioning{
+      background:#f0f8f8;
+      border:1px solid #b8d8d9;
+      border-left:4px solid var(--teal);
+      border-radius:14px;
+      padding:18px 20px;
+      font-size:1rem;
+      font-style:italic;
+      color:var(--text-mid);
+      line-height:1.7;
+    }
+
+    .avoid-item{
+      padding:13px 16px;
+      background:var(--danger-bg);
+      border:1px solid var(--danger-border);
+      border-left:4px solid var(--danger);
+      border-radius:12px;
+      margin-bottom:10px;
+      color:#5a1e1a;
+      font-size:.93rem;
+    }
+
+    .quote-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .quote-block{
+      background:#f7f5f1;
+      border:1px solid var(--border);
+      border-left:3px solid var(--border-strong);
+      padding:13px 15px;
+      border-radius:12px;
+      color:var(--text-mid);
+      font-style:italic;
+      font-size:.91rem;
+    }
+
+    .appendix .section-card{ background:#faf8f5 }
+
+    .data-note{
+      font-size:.74rem;
+      color:var(--soft);
+      margin-top:26px;
+      padding-top:14px;
+      border-top:1px solid var(--border);
+    }
+
+    @media(max-width:760px){
+      .hero-bottom{grid-template-columns:1fr}
+      .metrics{min-width:0; grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:850px){
+      .grid-2,.grid-3,.quote-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      body{padding:0 14px 56px}
+      .script-row{flex-direction:column}
+      .script-ts{min-width:auto}
+      .metrics{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="badge">Los Altos, CA · Authentic &amp; Elevated Mexican Cuisine</span>
+      </div>
+      <div class="kicker">UGC Video Ad Campaign Proposal</div>
+      <h1>El Comal</h1>
+      <p class="subtitle">March 06, 2026 · Based on 50 sampled client reviews (of 56) and 1,688 competitor reviews across 6 competitors.</p>
+      <hr class="hero-divider" />
+      <div class="hero-bottom">
+        <div class="hero-summary">
+          El Comal's best growth opportunity is to market the restaurant as a <strong>discovery-worthy experience</strong>, not just a menu. The strongest-performing content in this market combines <strong>abundance, texture, human reaction,</strong> and hidden-gem energy.
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-label">Google Rating</div>
+            <div class="metric-value">4.4</div>
+            <div class="metric-sub">Emerging local traction</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Client Reviews</div>
+            <div class="metric-value">56</div>
+            <div class="metric-sub">50 sampled for analysis</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Competitor Reviews</div>
+            <div class="metric-value">1,688</div>
+            <div class="metric-sub">Across 6 nearby players</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Core Strategy</div>
+            <div class="metric-value">Discovery</div>
+            <div class="metric-sub">Not menu-only promotion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <h2>01 — Campaign Hook</h2>
+  <section class="section-card">
+    <div class="hook-box">
+      Experience Mexican cuisine elevated — traditional flavors, modern presentation, and the kind of dishes people in Los Altos want to discover before everyone else does.
+    </div>
+  </section>
+
+  <h2>02 — Why This Campaign Can Work</h2>
+  <section class="grid-3">
+    <div class="insight-card">
+      <div class="mini-label">What reviews say</div>
+      <h3>Elevated but authentic</h3>
+      <p class="dish-reason">Customers repeatedly describe El Comal as more inventive, more polished, and a few steps above typical neighborhood Mexican options.</p>
+    </div>
+    <div class="insight-card">
+      <div class="mini-label">What social media says</div>
+      <h3>Discovery beats promotion</h3>
+      <p class="dish-reason">The best-performing content makes viewers feel they found a hidden gem. Lower-performing posts feel like restaurant ads.</p>
+    </div>
+    <div class="insight-card">
+      <div class="mini-label">What Los Altos values</div>
+      <h3>Quality + atmosphere + signal value</h3>
+      <p class="dish-reason">In this neighborhood, diners respond to visual quality, social proof, and premium-looking dining experiences they can share.</p>
+    </div>
+  </section>
+
+  <h2>03 — Two Video Concepts To Hook Attention</h2>
+  <section class="grid-2">
+    <div class="video-card">
+      <div class="mini-label">Video Concept 01</div>
+      <h3>Hidden Gem Table Reveal</h3>
+      <div class="video-shell">
+        <video controls preload="metadata" aria-label="Hidden Gem Table Reveal video">
+          <source src="comal1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-note">Place <strong>comal1.mp4</strong> in the same folder as this HTML file.</div>
+      </div>
+      <div class="video-meta">
+        <span class="pill">Hook: "Los Altos has one of those spots…"</span>
+        <span class="pill">Abundance table</span>
+        <span class="pill">Human reaction</span>
+        <span class="pill">Discovery framing</span>
+      </div>
+      <p class="dish-reason">This video should feel like a local recommendation, not an ad. Start outside, enter the space, reveal multiple dishes at once, and finish with bite reactions and one memorable line.</p>
+    </div>
+    <div class="video-card">
+      <div class="mini-label">Video Concept 02</div>
+      <h3>Molcajete + Mole Spectacle</h3>
+      <div class="video-shell">
+        <video controls preload="metadata" aria-label="Molcajete and Mole Spectacle video">
+          <source src="comal2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-note">Place <strong>comal2.mp4</strong> in the same folder as this HTML file.</div>
+      </div>
+      <div class="video-meta">
+        <span class="pill">Hook: visual spectacle</span>
+        <span class="pill">Steam + sauce textures</span>
+        <span class="pill">Signature dish authority</span>
+        <span class="pill">Premium dining cue</span>
+      </div>
+      <p class="dish-reason">This concept turns the molcajete and mole into theater. Lead with movement and texture, then show the dish landing at the table. The goal is to sell experience, not just ingredients.</p>
+    </div>
+  </section>
+
+  <h2>04 — Hero Dishes</h2>
+  <section class="grid-2">
+    <div class="dish-card">
+      <div class="dish-name">Taco Gobernador (Shrimp Tacos)</div>
+      <div class="dish-reason">Vibrant, fresh, and premium-looking. Strong for close-ups with shrimp texture, crema, salsa, and hand-held bite shots.</div>
+    </div>
+    <div class="dish-card">
+      <div class="dish-name">Mole Dishes</div>
+      <div class="dish-reason">The glossy depth of the mole reads as rich, complex, and signature-worthy. A strong cue for authenticity and culinary seriousness.</div>
+    </div>
+    <div class="dish-card">
+      <div class="dish-name">Chile en Nogada</div>
+      <div class="dish-reason">Highly photogenic and visually distinctive. Its color story makes it stand out immediately in feeds and short-form video.</div>
+    </div>
+    <div class="dish-card">
+      <div class="dish-name">Ceviche</div>
+      <div class="dish-reason">Bright, fresh, and elegant. Useful for contrast against heavier dishes and for signaling range, freshness, and sophistication.</div>
+    </div>
+  </section>
+
+  <h2>05 — 35-Second Video Script</h2>
+  <section class="script">
+    <div class="script-row">
+      <span class="script-ts">00:00</span>
+      <div class="script-action">
+        Exterior or entry shot that feels like a discovery moment. Quick movement into the space, then immediate cut toward a table loaded with standout dishes.
+        <div class="script-audio">♪ Upbeat Latin-inspired music. Voiceover: "Los Altos has one of those spots you need to know about…"</div>
+      </div>
+    </div>
+    <div class="script-row">
+      <span class="script-ts">00:05</span>
+      <div class="script-action">
+        Fast close-ups: Taco Gobernador, Chile en Nogada, mole plating, and ceviche. Emphasize sauce, color, steam, and freshness.
+        <div class="script-audio">♪ Soft sizzle and plating sounds. Voiceover: "Traditional Mexican flavors, elevated with dishes that look as good as they taste."</div>
+      </div>
+    </div>
+    <div class="script-row">
+      <span class="script-ts">00:10</span>
+      <div class="script-action">
+        Show a shared table moment: guests lean in, server sets a dish down, one bite reaction lands on camera.
+        <div class="script-audio">♪ Ambient dining audio. Voiceover: "From rich mole to fresh seafood and handmade details, every plate feels like a standout."</div>
+      </div>
+    </div>
+    <div class="script-row">
+      <span class="script-ts">00:17</span>
+      <div class="script-action">
+        Insert the signature spectacle shot: molcajete landing at the table or rich mole being finished live.
+        <div class="script-audio">♪ Music swells. Voiceover: "It's not just dinner — it's the kind of place people talk about after they leave."</div>
+      </div>
+    </div>
+    <div class="script-row">
+      <span class="script-ts">00:25</span>
+      <div class="script-action">
+        Warm service moment, then a clean final frame of the table and restaurant identity.
+        <div class="script-audio">♪ Music resolves. Voiceover: "El Comal — Mexican cuisine elevated in the heart of Los Altos."</div>
+      </div>
+    </div>
+  </section>
+
+  <h2>06 — On-Screen Text Overlays</h2>
+  <section class="section-card">
+    <div class="overlay-wrap">
+      <span class="overlay-pill">Los Altos has one of those spots.</span>
+      <span class="overlay-pill">Traditional flavors. Elevated presentation.</span>
+      <span class="overlay-pill">The mole is a must-try.</span>
+      <span class="overlay-pill">A few steps above the usual.</span>
+      <span class="overlay-pill">Authentic, inventive, unforgettable.</span>
+      <span class="overlay-pill">Come for the dish. Stay for the experience.</span>
+    </div>
+  </section>
+
+  <h2>07 — Happy Hour / Offer Angle</h2>
+  <section class="section-card">
+    <div class="big-text">
+      Frame the offer around discovery and premium value: a place for a memorable meal, a polished dinner, or a shareable table experience — not discount messaging. In this market, perceived quality performs better than heavy price emphasis.
+    </div>
+  </section>
+
+  <h2>08 — Competitive Positioning</h2>
+  <section class="section-card">
+    <div class="positioning">
+      El Comal stands apart by combining authentic Mexican depth with a more elevated, visually distinctive, and service-forward experience. Where nearby options often win on familiarity, El Comal can win on memorability: richer presentation, more premium cues, stronger signature dishes, and a dining atmosphere that feels both warm and special.
+    </div>
+  </section>
+
+  <h2>09 — What Not To Do</h2>
+  <section class="section-card">
+    <div class="avoid-item">Do not lead with static dish shots alone. The strongest-performing restaurant content needs motion, reaction, or discovery context.</div>
+    <div class="avoid-item">Do not make the video feel like a direct ad too early. Avoid heavy branding overlays in the opening seconds.</div>
+    <div class="avoid-item">Do not undersell the signature spectacle dishes. Mole and molcajete should feel dramatic, not merely documented.</div>
+    <div class="avoid-item">Do not lose the service advantage. Reviews suggest hospitality is part of the product, so show it on camera.</div>
+    <div class="avoid-item">Do not compete on price. Compete on premium experience, quality, and distinctiveness.</div>
+  </section>
+
+  <div class="appendix">
+    <h2>Appendix — Raw Review Signals</h2>
+    <section class="section-card">
+      <h3>Reviewer Quotes</h3>
+      <div class="quote-grid">
+        <div class="quote-block">"Super delicious and unique dishes."</div>
+        <div class="quote-block">"The perfect balance between traditional Mexican home-style cooking and a high-end dining experience."</div>
+        <div class="quote-block">"Amazing food, excellent service and a great experience all the way around."</div>
+        <div class="quote-block">"Inventive, high-quality, and truly excellent Mexican food."</div>
+        <div class="quote-block">"The mole is a must try!"</div>
+      </div>
+
+      <h3 style="margin-top:22px;">Client Differentiators</h3>
+      <ul>
+        <li>Authentic and elevated Mexican cuisine with inventive execution.</li>
+        <li>Exceptional customer service and attentive hospitality.</li>
+        <li>Unique, high-quality dishes that stand apart from standard neighborhood options.</li>
+        <li>Inviting atmosphere with a clean, warm, and memorable interior/patio feel.</li>
+        <li>Useful flexibility for dietary preferences, including gluten-free and dairy-free options.</li>
+      </ul>
+
+      <h3 style="margin-top:22px;">Competitor Gaps</h3>
+      <ul>
+        <li><strong>Lulus on Main Street:</strong> slow service, order accuracy issues, bland dishes in some cases, uneven value perception.</li>
+        <li><strong>La Fiesta:</strong> inconsistent salsa/guacamole quality, noisy environment, occasional service friction.</li>
+        <li><strong>Casa Lupe:</strong> inconsistent service, some bland or overly cheesy dishes, less distinctive presentation.</li>
+        <li><strong>Rustic House Oyster Bar &amp; Grill:</strong> inconsistent dish quality, some bland mains, portion/value complaints, uneven service.</li>
+        <li><strong>The Post:</strong> significant service inconsistency, noisy environment, uneven food execution.</li>
+      </ul>
+
+      <p class="data-note">Generated by M4ROI · March 06, 2026 · Dataset: restaurants</p>
+    </section>
+  </div>
+
+</body>
+</html>
