@@ -1,6 +1,6 @@
 M4ROI — AI Marketing Agents for Local Business Growth
 
-**[m4roi.com](https://www.m4roi.com) · david@m4roi.com · Ad proposal is live at: https://davidcastropena.github.io/M4ROI-nar-proposal/**
+**[m4roi.com](https://www.m4roi.com) · david@m4roi.com · Ad proposal is live at: https://davidcastropena.github.io/M4ROI-comal-proposal/**
 
 ---
 
